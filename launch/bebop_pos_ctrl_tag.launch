@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<launch>
+
+  <arg name="trajec_filepath" default="/home/uav/bebop_ws/src/bebop_pos_ctrl/config/list_aruco.yaml"/>
+  <arg name="Tag_or_Mocap" default="1.0"/>
+
+  <node name="position_control_node" pkg="bebop_pos_ctrl" type="position_control_node" output="screen" >
+        <param name="Hz" value="10" />
+        <param name="time_hover" value="100" />
+        <param name="debug" value="true" />
+
+        <param name="K_p_x" value="0.38" />
+        <param name="K_i_x" value="0.0" />
+        <param name="K_d_x" value="0.5" />
+
+        <param name="K_p_y" value="0.38" />
+        <param name="K_i_y" value="0.0" />
+        <param name="K_d_y" value="0.5" />
+
+        <param name="MaxV_xy" value="0.5" />  
+        <param name="Limit_xy_error_int" value="0.1" />
+        <param name="Tolerance_hori_pos" value="0.08" />
+
+        <param name="K_p_z" value="0.7" />
+        <param name="K_i_z" value="0.0" />
+        <param name="K_d_z" value="0.3" />
+        <param name="MaxV_z" value="1.0" />
+        <param name="Limit_z_error_int" value="0.1" />
+        <param name="Tolerance_vert_pos" value="0.05" />
+
+        
+        <param name="K_p_yaw" value="0.4" />
+        <param name="K_i_yaw" value="0.0" />
+        <param name="K_d_yaw" value="0.0" />
+        <param name="MaxV_yaw" value="10.0"/>
+        <param name="Limit_yaw_error_int" value="0.3"/>
+        <param name="Tolerance_yaw_rad" value="0.1"/>
+        <param name="trajec_filepath" value="$(arg trajec_filepath)"/>
+        <param name="Tag_or_Mocap" value="$(arg Tag_or_Mocap)" />
+        <!--<remap from="/pos_comp_uav_kf" to="/pos_uav"/>-->
+        <remap from="/pos_uav" to="/pos_uav"/>
+        <remap from="/vel_uav" to="/vel_uav"/>
+        
+  </node>
+</launch>

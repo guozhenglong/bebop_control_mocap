@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<launch>
+	<!-- Launches the get pos node -->
+    <node pkg="bebop_pos_ctrl" type="get_pos_uav_node" name="get_pos_uav_node" output="screen">
+        <param name="low_pass_param_vel" value="0.15" />
+        <param name="low_pass_param_att" value="0.2" />
+        <param name="Akp" value="10.0" />
+        <param name="Akq" value="0.1" />
+        <param name="Akr" value="10.0" />
+        <param name="Lkp" value="0.01" />
+        <param name="Lkq" value="5" />
+        <param name="Lkr" value="0.5" />
+        <param name="Lckp" value="10.0" />
+        <param name="Lckq" value="0.25" />
+        <param name="Lckr" value="10.0" />        
+    </node>
+</launch>
